@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/davorz/SenchaExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core functions for Sencha ExtJS proxy on server side. (Paging, Sorting, Filtering, Grouping)</description>
-    <releaseNotes>Target .NET version set to 4.5.1</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Sencha, WebApi</tags>
 
