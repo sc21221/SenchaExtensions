@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenchaExtensions", "SenchaExtensions\SenchaExtensions.csproj", "{85D504DE-E149-4149-9D35-CBE69F637E52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{560811CC-AFFF-4BAE-B444-E44DAACD965D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\docs.md = .nuget\docs.md
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{C4D29EEB-DF96-402A-AE03-EF10076B99B8}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\deploy\NugetDeploy.cmd = .nuget\deploy\NugetDeploy.cmd
+		.nuget\deploy\NugetPack.cmd = .nuget\deploy\NugetPack.cmd
+		.nuget\deploy\NugetPush.cmd = .nuget\deploy\NugetPush.cmd
+		.nuget\deploy\SenchaExtensions.cmd = .nuget\deploy\SenchaExtensions.cmd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenchaExtensions.Tests", "SenchaExtensions.Tests\SenchaExtensions.Tests.csproj", "{2C6189A9-F89B-46B6-A2AB-F43450BB5988}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85D504DE-E149-4149-9D35-CBE69F637E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D504DE-E149-4149-9D35-CBE69F637E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D504DE-E149-4149-9D35-CBE69F637E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D504DE-E149-4149-9D35-CBE69F637E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6189A9-F89B-46B6-A2AB-F43450BB5988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6189A9-F89B-46B6-A2AB-F43450BB5988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6189A9-F89B-46B6-A2AB-F43450BB5988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6189A9-F89B-46B6-A2AB-F43450BB5988}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4D29EEB-DF96-402A-AE03-EF10076B99B8} = {560811CC-AFFF-4BAE-B444-E44DAACD965D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D3FA393-EB69-4953-8A56-2EBEAC831056}
+	EndGlobalSection
+EndGlobal
