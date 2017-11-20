@@ -37,6 +37,22 @@ namespace SenchaExtensions.Tests.Unit
 
         #region Equal
         [TestMethod]
+        public void TryFilter_Operator_Equal_Bool()
+        {
+            object request = "[{\"operator\":\"==\",\"value\":true,\"property\":\"isBroker\"}]";
+
+            Filter filter = converter.ConvertFrom(request) as Filter;
+
+            var result = MockData
+                .Users()
+                .AsQueryable()
+                .FilterBy(filter)
+                .ToList();
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
         public void TryFilter_Operator_Equal_String()
         {
             object request = "[{\"operator\":\"eq\",\"value\":\"Davor\",\"property\":\"firstName\"}]";

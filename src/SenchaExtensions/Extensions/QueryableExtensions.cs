@@ -208,16 +208,22 @@ namespace SenchaExtensions
             switch (operation.Operator)
             {
                 case "eq":
+                case "==":
                     return Operator.Equal;
                 case "ne":
+                case "!=":
                     return Operator.NotEqual;
                 case "gt":
+                case ">":
                     return Operator.GreaterThan;
                 case "ge":
+                case ">=":
                     return Operator.GreaterOrEqual;
                 case "lt":
+                case "<":
                     return Operator.LessThen;
                 case "le":
+                case "<=":
                     return Operator.LessOrEqual;
                 case "in":
                     return Operator.In;

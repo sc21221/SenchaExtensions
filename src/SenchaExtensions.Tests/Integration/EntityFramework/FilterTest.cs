@@ -57,6 +57,20 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         }
 
         [TestMethod]
+        public void TryFilter_Operator_Equal_Bool()
+        {
+            object request = "[{\"operator\":\"==\",\"value\":true,\"property\":\"isBroker\"}]";
+
+            Filter filter = converter.ConvertFrom(request) as Filter;
+
+            var result = db.Users
+                .FilterBy(filter)
+                .ToList();
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
         public void TryFilter_Operator_Equal_Int32()
         {
             object request = "[{\"operator\":\"eq\",\"value\":\"102\",\"property\":\"ordersSubmited\"}]";
