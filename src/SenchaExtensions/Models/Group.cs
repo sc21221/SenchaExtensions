@@ -11,8 +11,8 @@ namespace SenchaExtensions
 {
     [JsonObject]
     [TypeConverter(typeof(GroupConverter))]
-    public class Group : ISortable
+    public class Group : IGroup
     {
-        public IList<SortOperation> Operations { get; set; }
+        public IList<ISortOperation> Operations { get; set; }
     }
 }

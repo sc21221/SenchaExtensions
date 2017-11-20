@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SenchaExtensions</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Sencha Extensions</title>
     <authors>Davor Zubak</authors>
     <owners>Davor Zubak</owners>
@@ -10,7 +10,10 @@
     <projectUrl>https://github.com/davorz/SenchaExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core functions for Sencha ExtJS proxy on server side. (Paging, Sorting, Filtering, Grouping)</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+      *Transfering Sencha Proxy objects to lambda expressions
+      *Now can be used for EntityFramework queries
+    </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Sencha, WebApi</tags>
 

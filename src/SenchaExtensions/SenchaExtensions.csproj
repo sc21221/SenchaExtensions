@@ -35,6 +35,8 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,13 +49,24 @@
     <Compile Include="Converters\FilterConverter.cs" />
     <Compile Include="Converters\GroupConverter.cs" />
     <Compile Include="Converters\SortConverter.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Infrastructure\ISortable.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
+    <Compile Include="Extensions\SortExtensions.cs" />
+    <Compile Include="Infrastructure\IGroup.cs" />
+    <Compile Include="Infrastructure\IGroupOperation.cs" />
+    <Compile Include="Infrastructure\ISortOperation.cs" />
+    <Compile Include="Infrastructure\IFilterOperation.cs" />
+    <Compile Include="Infrastructure\IFilter.cs" />
+    <Compile Include="Infrastructure\ISort.cs" />
     <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\FilterOperation.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Operator.cs" />
-    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\Items.cs" />
+    <Compile Include="Models\SaveResult.cs" />
+    <Compile Include="Models\PagingResult.cs" />
     <Compile Include="Models\Sort.cs" />
+    <Compile Include="Models\SortDirection.cs" />
+    <Compile Include="Models\SortOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

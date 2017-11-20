@@ -10,20 +10,8 @@ namespace SenchaExtensions
 {
     [JsonObject]
     [TypeConverter(typeof(SortConverter))]
-    public class Sort : ISortable
+    public class Sort : ISort
     {
-        public IList<SortOperation> Operations { get; set; }
-    }
-
-    public class SortOperation
-    {
-        public string Property { get; set; }
-        public SortDirection Direction { get; set; }
-    }
-
-    public enum SortDirection
-    {
-        ASC,
-        DESC
+        public IList<ISortOperation> Operations { get; set; }
     }
 }

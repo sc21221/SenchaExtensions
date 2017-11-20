@@ -31,10 +31,7 @@ namespace SenchaExtensions
 
                     return new Group()
                     {
-                        Operations = new List<SortOperation>()
-                        {
-                            JsonConvert.DeserializeObject<SortOperation>((string)value)
-                        }   
+                        Operations = JsonConvert.DeserializeObject<SortOperation[]>((string)value)
                     };
                 }
                 catch (Exception ex)

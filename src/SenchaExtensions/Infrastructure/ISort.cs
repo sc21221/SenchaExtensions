@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SenchaExtensions
 {
-    public interface ISortable
+    public interface ISort
     {
-        IList<SortOperation> Operations { get; set; }
+        IList<ISortOperation> Operations { get; set; }
     }
 }

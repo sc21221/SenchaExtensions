@@ -11,18 +11,8 @@ namespace SenchaExtensions
 {
     [JsonObject]
     [TypeConverter(typeof(FilterConverter))]
-    public class Filter
+    public class Filter : IFilter
     {
-        public IList<FilterOperation> Operations { get; set; }
-    }
-
-    public class FilterOperation
-    {
-        public string Property { get; set; }
-        public object Value { get; set; }
-        public string Operator { get; set; }
-        public bool ExactMatch { get; set; }
-        public bool AnyMatch { get; set; }
-        public bool CaseSensitive { get; set; }
+        public IList<IFilterOperation> Operations { get; set; }
     }
 }

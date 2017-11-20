@@ -45,7 +45,7 @@ namespace SenchaExtensions.Tests
                     Active = random.Next(0, 2) == 0 ? true : false,
                     DateCreated = GetRandomDate(),
                     OrdersSubmited = GetRandomInt(1, 100),
-                    AverageRate = GetRandomDouble(1, 5),
+                    AverageRate = GetRandomDecimal(1, 5),
                     OfficeId = GetRandomInt(1, 10)
                 });
             }
@@ -65,7 +65,7 @@ namespace SenchaExtensions.Tests
                 Active = true,
                 DateCreated = new DateTime(2020,2,12),
                 OrdersSubmited = 102,
-                AverageRate = 5.2,
+                AverageRate = 5.2m,
                 OfficeId = 7
             });
 
@@ -84,7 +84,7 @@ namespace SenchaExtensions.Tests
                 Active = true,
                 DateCreated = new DateTime(1994, 10, 16),
                 OrdersSubmited = -10,
-                AverageRate = -5.2,
+                AverageRate = -5.2m,
                 OfficeId = 8
             });
 
@@ -126,9 +126,9 @@ namespace SenchaExtensions.Tests
             return random.Next(from, to);
         }
 
-        private static double GetRandomDouble(double from, double to)
+        private static decimal GetRandomDecimal(decimal from, decimal to)
         {
-            var next = random.NextDouble();
+            var next = (Decimal)random.NextDouble();
 
             return from + (next * (to - from));
         }

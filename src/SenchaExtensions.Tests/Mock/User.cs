@@ -21,14 +21,9 @@ namespace SenchaExtensions.Tests
         public bool Active { get; set; }
         public DateTime DateCreated { get; set; }
         public int OrdersSubmited { get; set; }
-        public double AverageRate { get; set; }
+        public decimal AverageRate { get; set; }
 
         public int OfficeId { get; set; }
-    }
-
-    public class Office
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public virtual Office Office { get; set; }
     }
 }

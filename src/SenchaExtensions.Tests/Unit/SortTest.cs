@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SenchaExtensions.Tests
+namespace SenchaExtensions.Tests.Unit
 {
     [TestClass]
     public class SortTest

@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace SenchaExtensions.Tests
+namespace SenchaExtensions.Tests.Unit
 {
     [TestClass]
     public class PagingTest
@@ -18,7 +18,7 @@ namespace SenchaExtensions.Tests
             var result = MockData
                 .Users()
                 .AsQueryable()
-                .GetPagingResult(1, 0, 100);
+                .GetPagingResult(1, 0, 100, SortExtensions.Create("Id"));
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Success == true);
