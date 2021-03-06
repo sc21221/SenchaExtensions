@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>21.3.0.0</Version>
+    <Authors>Reinhard Schiessl</Authors>
+    <Company>handle IT</Company>
+    <Product>SenchaExtensions</Product>
+    <AssemblyVersion>21.3.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
+  </ItemGroup>
+
+</Project>

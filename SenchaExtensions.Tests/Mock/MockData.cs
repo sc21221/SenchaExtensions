@@ -17,7 +17,7 @@ namespace SenchaExtensions.Tests
         {
             #region mock
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 _offices.Add(new Office()
                 {
@@ -63,7 +63,7 @@ namespace SenchaExtensions.Tests
                 IsBroker = true,
                 IsManager = false,
                 Active = true,
-                DateCreated = new DateTime(2020,2,12),
+                DateCreated = DateTime.Today,
                 OrdersSubmited = 102,
                 AverageRate = 5.2m,
                 OfficeId = 7

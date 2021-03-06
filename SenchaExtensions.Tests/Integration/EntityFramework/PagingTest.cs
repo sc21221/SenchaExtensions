@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SenchaExtensions.Tests.Integration.EntityFramework
 {
@@ -17,13 +11,14 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestInitialize]
         public void Init()
         {
-            base.Init(out db);
         }
 
         [TestMethod]
         public void TryGetPagingResult()
         {
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .GetPagingResult(1, 0, 100, SortExtensions.Create("Id"));
 
             Assert.IsNotNull(result);

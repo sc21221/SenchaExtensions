@@ -143,7 +143,7 @@ namespace SenchaExtensions
                 contains = Expression.Call(constant, containsInfo, member);
             }
 
-            return contains ?? Expression.Call(member, typeof(string).GetMethod("Contains"), expression); ;
+            return contains ?? Expression.Call(member, typeof(string).GetMethod("Contains", new[] { typeof(string) }), expression); ;
         }
 
         private static Expression NotContains(Expression member, Expression expression)

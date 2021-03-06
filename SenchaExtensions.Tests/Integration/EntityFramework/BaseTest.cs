@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -19,6 +18,7 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
             AppDomain.CurrentDomain.SetData("DataDirectory", baseDirectory);
 
             db = new ApplicationDbContext();
+            db.Database.EnsureCreated();
         }
     }
 }

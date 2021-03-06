@@ -1,25 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SenchaExtensions.Tests.Integration.EntityFramework
+namespace SenchaExtensions.Tests.Unit
 {
     [TestClass]
-    public class FilterTest : BaseTest
+    public class FilterTest
     {
-        private ApplicationDbContext db;
         private FilterConverter converter;
 
         [TestInitialize]
         public void Init()
         {
-            base.Init(out db);
             converter = new FilterConverter();
         }
 
@@ -31,7 +24,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -42,32 +37,36 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
         #region Equal
         [TestMethod]
-        public void TryFilter_Operator_Equal_String()
-        {
-            object request = "[{\"operator\":\"eq\",\"value\":\"Davor\",\"property\":\"firstName\"}]";
-
-            Filter filter = converter.ConvertFrom(request) as Filter;
-
-            var result = db.Users
-                .FilterBy(filter)
-                .ToList();
-
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.Count() == 1);
-        }
-
-        [TestMethod]
         public void TryFilter_Operator_Equal_Bool()
         {
             object request = "[{\"operator\":\"==\",\"value\":true,\"property\":\"isBroker\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TryFilter_Operator_Equal_String()
+        {
+            object request = "[{\"operator\":\"eq\",\"value\":\"Davor\",\"property\":\"firstName\"}]";
+
+            Filter filter = converter.ConvertFrom(request) as Filter;
+
+            var result = MockData
+                .Users()
+                .AsQueryable()
+                .FilterBy(filter)
+                .ToList();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count() == 1);
         }
 
         [TestMethod]
@@ -77,7 +76,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -92,7 +93,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -107,7 +110,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -124,7 +129,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -139,7 +146,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -150,16 +159,18 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestMethod]
         public void TryFilter_Operator_GreaterThen_DateTime()
         {
-            object request = "[{\"operator\":\"gt\",\"value\":\"2020-02-11\",\"property\":\"dateCreated\"}]";
+            object request = "[{\"operator\":\"gt\",\"value\":\"1994-10-16\",\"property\":\"dateCreated\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Count() == 1);
+            Assert.IsTrue(result.Count() == MockData.Users().Count-1);
         }
         #endregion GreaterThen
 
@@ -171,7 +182,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -186,7 +199,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -201,7 +216,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -218,7 +235,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -233,7 +252,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -248,7 +269,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -265,7 +288,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -280,7 +305,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -295,7 +322,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -312,7 +341,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -327,7 +358,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -338,11 +371,14 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestMethod]
         public void TryFilter_Operator_In_DateTime()
         {
-            object request = "[{\"operator\":\"in\",\"value\":[\"1994-16-10\",\"2020-12-02\"],\"property\":\"dateCreated\"}]";
+            var today = DateTime.Now.ToString("yyyy-dd-MM");
+            object request = "[{\"operator\":\"in\",\"value\":[\"1994-16-10\",\"" + today + "\"],\"property\":\"dateCreated\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -359,7 +395,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -374,7 +412,9 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
 
@@ -385,14 +425,17 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestMethod]
         public void TryFilter_Operator_NotIn_DateTime()
         {
-            object request = "[{\"operator\":\"notin\",\"value\":[\"1994-16-10\",\"2020-12-02\"],\"property\":\"dateCreated\"}]";
+            var today = DateTime.Now.ToString("yyyy-dd-MM");
+            object request = "[{\"operator\":\"notin\",\"value\":[\"1994-16-10\",\"" + today + "\"],\"property\":\"dateCreated\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
-            var result = db.Users
+            var result = MockData
+                .Users()
+                .AsQueryable()
                 .FilterBy(filter)
                 .ToList();
-
+            System.Console.WriteLine($"TryFilter_Operator_NotIn_DateTime: Count={result.Count}");
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count() == 1000);
         }

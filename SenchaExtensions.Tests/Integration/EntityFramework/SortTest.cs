@@ -1,37 +1,35 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SenchaExtensions.Tests.Integration.EntityFramework
 {
     [TestClass]
-    public class GroupTest : BaseTest
+    public class SortTest : BaseTest
     {
         private ApplicationDbContext db;
-        private GroupConverter converter;
+
+        private SortConverter converter;
 
         [TestInitialize]
         public void Init()
         {
             base.Init(out db);
-            converter = new GroupConverter();
+
+            converter = new SortConverter();
         }
 
         #region ASC
         [TestMethod]
-        public void TryGroup_Dir_Asc()
+        public void TrySort_Dir_Asc()
         {
             object request = "[{\"property\":\"dateCreated\",\"direction\":\"ASC\"}]";
 
-            Group group = converter.ConvertFrom(request) as Group;
+            Sort sort = converter.ConvertFrom(request) as Sort;
 
-            var result = db.Users
-                .GroupBy(group)
+            var result = MockData
+                .Users()
+                .AsQueryable()
+                .SortBy(sort)
                 .ToList();
 
             Assert.IsNotNull(result);
@@ -41,14 +39,16 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
         #region DESC
         [TestMethod]
-        public void TryGroup_Dir_Desc()
+        public void TrySort_Dir_Desc()
         {
             object request = "[{\"property\":\"dateCreated\",\"direction\":\"DESC\"}]";
 
-            Group group = converter.ConvertFrom(request) as Group;
+            Sort sort = converter.ConvertFrom(request) as Sort;
 
-            var result = db.Users
-                .GroupBy(group)
+            var result = MockData
+                .Users()
+                .AsQueryable()
+                .SortBy(sort)
                 .ToList();
 
             Assert.IsNotNull(result);
