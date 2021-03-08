@@ -24,9 +24,8 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Group group = converter.ConvertFrom(request) as Group;
 
-            var result = MockData
-                .Users()
-                .AsQueryable()
+            var result = db
+                .Users
                 .GroupBy(group)
                 .ToList();
 
@@ -43,9 +42,8 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Group group = converter.ConvertFrom(request) as Group;
 
-            var result = MockData
-                .Users()
-                .AsQueryable()
+            var result = db
+                .Users
                 .GroupBy(group)
                 .ToList();
 

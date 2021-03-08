@@ -26,9 +26,8 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Sort sort = converter.ConvertFrom(request) as Sort;
 
-            var result = MockData
-                .Users()
-                .AsQueryable()
+            var result = db
+                .Users
                 .SortBy(sort)
                 .ToList();
 

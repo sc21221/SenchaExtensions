@@ -106,6 +106,8 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
+            var x = db.Users.Where(y => y.DateCreated.Date == new DateTime(2020,12,2).Date);
+
             var result = db.Users
                 .FilterBy(filter)
                 .ToList();
@@ -149,11 +151,13 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestMethod]
         public void TryFilter_Operator_GreaterThen_DateTime()
         {
-            var today = DateTime.Now.ToString("yyyy-dd-MM");
+            var today = DateTime.Today.AddDays(-1).ToString("yyyy-dd-MM");
             object request = "[{\"operator\":\"gt\",\"value\":\"" + today + "\",\"property\":\"dateCreated\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 
+            var x = db.Users.Where(y => y.DateCreated > DateTime.Now.AddDays(-1));
+            
             var result = db.Users
                 .FilterBy(filter)
                 .ToList();
@@ -198,7 +202,7 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         public void TryFilter_Operator_GreaterOrEqual_DateTime()
         {
             var today = DateTime.Now.ToString("yyyy-dd-MM");
-            object request = "[{\"operator\":\"ge\",\"value\":\"" + today + "\",\"property\":\"dateCreated\"}]";
+            object request = "[{\"operator\":\"ge\",\"value\":\"" + today + "\",\"property\":\"DateCreated\"}]";
 
             Filter filter = converter.ConvertFrom(request) as Filter;
 

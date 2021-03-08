@@ -11,14 +11,14 @@ namespace SenchaExtensions.Tests.Integration.EntityFramework
         [TestInitialize]
         public void Init()
         {
+            base.Init(out db);
         }
 
         [TestMethod]
         public void TryGetPagingResult()
         {
-            var result = MockData
-                .Users()
-                .AsQueryable()
+            var result = db
+                .Users
                 .GetPagingResult(1, 0, 100, SortExtensions.Create("Id"));
 
             Assert.IsNotNull(result);

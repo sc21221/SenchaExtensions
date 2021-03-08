@@ -18,7 +18,6 @@ namespace SenchaExtensions.Tests
                 .UseInMemoryDatabase(databaseName: "SenchaExtensionsTest");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().HasData(MockData.Users());
             modelBuilder.Entity<Office>().HasData(MockData.Offices());
         }
