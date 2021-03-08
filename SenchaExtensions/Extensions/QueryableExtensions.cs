@@ -98,6 +98,10 @@ namespace SenchaExtensions
                     {
                         value = JsonConvert.DeserializeObject<List<Decimal>>(operation.Value.ToString());
                     }
+                    else if (operation.Operator.Equals("in", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        value = JsonConvert.DeserializeObject<List<String>>(operation.Value.ToString());
+                    }
                 }
                 else
                 {
@@ -158,7 +162,7 @@ namespace SenchaExtensions
             Expression orderByProperty = Expression.Property(paramterExpression, propertyName);
             LambdaExpression lambda = Expression.Lambda(orderByProperty, paramterExpression);
             MethodInfo genericMethod =
-              OrderByMethod.MakeGenericMethod(typeof(T), orderByProperty.Type);
+              ThenOrderByMethod.MakeGenericMethod(typeof(T), orderByProperty.Type);
             object ret = genericMethod.Invoke(null, new object[] { source, lambda });
             return (IQueryable<T>)ret;
         }
@@ -170,7 +174,7 @@ namespace SenchaExtensions
             Expression orderByProperty = Expression.Property(paramterExpression, propertyName);
             LambdaExpression lambda = Expression.Lambda(orderByProperty, paramterExpression);
             MethodInfo genericMethod =
-              OrderByDescendingMethod.MakeGenericMethod(typeof(T), orderByProperty.Type);
+              ThenOrderByDescendingMethod.MakeGenericMethod(typeof(T), orderByProperty.Type);
             object ret = genericMethod.Invoke(null, new object[] { source, lambda });
             return (IQueryable<T>)ret;
         }
@@ -197,7 +201,8 @@ namespace SenchaExtensions
                     return Contains(member, constant);
                 case Operator.NotIn:
                     return NotContains(member, constant);
-
+                case Operator.None:
+                    break;
             }
 
             throw new Exception($"Invalid operator {operation.AsOperatorEnum()} provided!");
@@ -243,6 +248,14 @@ namespace SenchaExtensions
         private static readonly MethodInfo OrderByDescendingMethod =
             typeof(Queryable).GetMethods().Single(method =>
                 method.Name == "OrderByDescending" && method.GetParameters().Length == 2);
+
+        private static readonly MethodInfo ThenOrderByMethod =
+            typeof(Queryable).GetMethods().Single(method =>
+                method.Name == "ThenBy" && method.GetParameters().Length == 2);
+
+        private static readonly MethodInfo ThenOrderByDescendingMethod =
+            typeof(Queryable).GetMethods().Single(method =>
+                method.Name == "ThenByDescending" && method.GetParameters().Length == 2);
 
         private static bool PropertyExists<T>(string propertyName)
         {

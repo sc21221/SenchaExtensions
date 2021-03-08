@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SenchaExtensions
 {
@@ -28,16 +24,18 @@ namespace SenchaExtensions
                 try
                 {
                     value = value.ToString().Replace("\"", "'");
+                    if (!value.ToString().StartsWith("["))
+                    {
+                        value = "[" + value + "]";
+                    }
 
                     return new Group()
                     {
                         Operations = JsonConvert.DeserializeObject<SortOperation[]>((string)value)
                     };
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    //log ex
-
                     return null;
                 }
             }
